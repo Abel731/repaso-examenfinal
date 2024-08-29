@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ciudades</title>
+    <title>Nacionalidades</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 <body>
 
     <div class="container mt-4">
-        <h3>Listar Ciudades</h3>
+        <h3>Listar Nacionalidades</h3>
 
         <!-- Boton agregar -->
         <div class="row mb-2">
@@ -32,7 +32,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                      
+                      {% for item in lista_nacionalidades %}
+                      <tr>
+                        <td>{{ item['descripcion'] }}</td>
+                        <td>
+                          <div class="row">
+                            <div class="col col-md-2">
+                              <a href="{{ url_for('nacionalidadesEditar', id=item['id']) }}" class="btn btn-primary">Editar</a>
+                            </div>
+                            <div class="col col-md-2">
+                              <a href="{{ url_for('nacionalidadesEliminar', id=item['id']) }}" class="btn btn-danger">Eliminar</a>
+                            </div> 
+                          </div>
+                        </td>
+                      </tr>
+                      {% endfor %}
                     </tbody>
                 </table>
 
